@@ -1,21 +1,56 @@
 package com.sprhib.model;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="teams")
-public class Team {
+@Table(name="team")
+public class Team implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private Integer id;
 	
+	@Column(name="name")
 	private String name;
 	
+	@Column(name="rating")
 	private Integer rating;
+	
+	@OneToMany(mappedBy="team", cascade = CascadeType.ALL)
+	private List<Player> players;
+	
+	public Team() {
+		
+	}
+	
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+	public Team(String name, int rating) {
+		this.name = name;
+		this.rating = rating;
+	}
 	
 	public Integer getId() {
 		return id;
