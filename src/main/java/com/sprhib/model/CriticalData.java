@@ -1,5 +1,6 @@
 package com.sprhib.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CRITICALDATA")
+@Table(name="criticaldata")
 public class CriticalData {
 
 	@Id
@@ -20,15 +21,15 @@ public class CriticalData {
 	
 	@Column
 	private String interruptTolerationTime;
-	
+/*	
 	@Column
 	private String interruptAffectedApplication;
-
+*/
 	@Column
 	private String relatedModuls;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="APPLICATIONID")
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="application_applicationId")
 	private Application application;
 
 	
@@ -51,15 +52,15 @@ public class CriticalData {
 		this.interruptTolerationTime = interruptTolerationTime;
 	}
 
-
-	public String getInterruptAffectedApplication() {
-		return interruptAffectedApplication;
-	}
-
-
-	public void setInterruptAffectedApplication(String interruptAffectedApplication) {
-		this.interruptAffectedApplication = interruptAffectedApplication;
-	}
+//
+//	public String getInterruptAffectedApplication() {
+//		return interruptAffectedApplication;
+//	}
+//
+//
+//	public void setInterruptAffectedApplication(String interruptAffectedApplication) {
+//		this.interruptAffectedApplication = interruptAffectedApplication;
+//	}
 
 
 	public String getRelatedModuls() {

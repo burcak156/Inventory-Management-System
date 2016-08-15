@@ -5,13 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="application")
 public class Application {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int applicationId;
+	private Integer applicationId;
 	
 	@Column
 	private String applicationCode;

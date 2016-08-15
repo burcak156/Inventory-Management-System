@@ -1,64 +1,41 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
-    <!-- Bootstrap -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <!-- Font Awesome -->
-    <link href="/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- iCheck -->
-    <link href="/resources/css/green.css" rel="stylesheet">
-    <!-- Datatables -->
-    <link href="/resources/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/resources/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/resources/css/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/resources/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/resources/css/scroller.bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-			<div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Default Example <small>Users</small></h2>
-                    
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p class="text-muted font-13 m-b-30">
-                      DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-                    </p>
-                    <table id="datatable" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
+<h1>List of teams</h1>
+<p>Here you can see the list of the teams, edit them, remove or update.</p>
+<table border="1px" cellpadding="0" cellspacing="0" >
+<thead>
+<tr>
+<th width="10%">id</th><th width="15%">name</th><th width="10%">code</th><th width="10%">actions</th>
+</tr>
+</thead>
+<tbody>
+<c:forEach var="application" items="${applications}">
+<tr>
+	<td>${application.applicationId}</td>
+	<td>${application.applicationName}</td>
+	<td>${application.applicationCode}</td>
+	<td>
+	<a href="${pageContext.request.contextPath}/application/edit/${application.applicationId}.html">Edit</a><br/>
+	<a href="${pageContext.request.contextPath}/application/delete/${application.applicationId}.html">Delete</a><br/>
+	</td>
+</tr>
+</c:forEach>
+</tbody>
+</table>
 
-                      <tbody>
-                      <c:forEach items="${apps}" var="apps">
-                        <tr>
-                          <td>${apps.appName}</td>
-                          <td>${apps.appCode}</td>
-                          <td>${apps.applicationId}</td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        </c:forEach>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+<p><a href="${pageContext.request.contextPath}/index.html">Home page</a></p>
+
 	
     <!-- jQuery -->
     <script src="/resources/js/jquery.min.js"></script>
