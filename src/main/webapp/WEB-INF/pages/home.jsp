@@ -13,6 +13,7 @@
 ${message}<br/>
 <a href="${pageContext.request.contextPath}/team/add.html">Add new team</a><br/>
 <a href="${pageContext.request.contextPath}/team/list.html">Team list</a><br/>
+<a href="${pageContext.request.contextPath}/application/applicationlist.html">AppList</a><br/>
 </p>
 </body>
 </html>
