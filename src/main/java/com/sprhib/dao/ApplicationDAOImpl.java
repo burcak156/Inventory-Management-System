@@ -24,13 +24,13 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 	public void addApplication(Application application) {
 		getCurrentSession().save(application);
 	}
-
+	
 	@Override
 	public void updateApplication(Application application) {
 		Application appToUpdate = getApplication(application.getApplicationId());
 		appToUpdate.setApplicationName(application.getApplicationName());
 		appToUpdate.setApplicationCode(application.getApplicationCode());
-		appToUpdate.setApplicationAltenativeApp(application.getApplicationAltenativeApp());
+		appToUpdate.setApplicationAlternativeApp(application.getApplicationAlternativeApp());
 		appToUpdate.setApplicationAuthorization(application.getApplicationAuthorization());
 		appToUpdate.setApplicationBrowser(application.getApplicationBrowser());
 		appToUpdate.setApplicationCommonUserCode(application.getApplicationCommonUserCode());
@@ -44,23 +44,23 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 		appToUpdate.setApplicationUserCount(application.getApplicationUserCount());
 		getCurrentSession().update(appToUpdate);
 	}
-
+	
 	@Override
 	public Application getApplication(int id) {
 		Application application = (Application) getCurrentSession().get(Application.class, id);
 		return application;
 	}
-
+	
 	@Override
 	public void deleteApplication(int id) {
 		Application application = getApplication(id);
 		if(application != null)
 			getCurrentSession().delete(application);
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<Application> getApplications() {
-		return getCurrentSession().createQuery("SELECT applicationId, applicationCode, applicationName FROM Application").list();
+		return getCurrentSession().createQuery("from Application").list();
 	}
-
+	
 }

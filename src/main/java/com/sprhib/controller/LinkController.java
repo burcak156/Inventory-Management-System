@@ -17,3 +17,6 @@ public class LinkController {
 		return new ModelAndView("home");
 	}
 }
+
+
+//http://www.journaldev.com/8718/spring-4-security-mvc-login-logout-example

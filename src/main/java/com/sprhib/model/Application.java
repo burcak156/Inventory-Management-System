@@ -1,5 +1,7 @@
 package com.sprhib.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="application")
-public class Application {
+public class Application implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer applicationId;
@@ -52,7 +59,7 @@ public class Application {
 	private int applicationScreenNumber;
 	
 	@Column
-	private String applicationAltenativeApp;
+	private String applicationAlternativeApp;
 	
 	@Column
 	private int applicationUserCount;
@@ -161,12 +168,12 @@ public class Application {
 		this.applicationScreenNumber = applicationScreenNumber;
 	}
 
-	public String getApplicationAltenativeApp() {
-		return applicationAltenativeApp;
+	public String getApplicationAlternativeApp() {
+		return applicationAlternativeApp;
 	}
 
-	public void setApplicationAltenativeApp(String applicationAltenativeApp) {
-		this.applicationAltenativeApp = applicationAltenativeApp;
+	public void setApplicationAlternativeApp(String applicationAlternativeApp) {
+		this.applicationAlternativeApp = applicationAlternativeApp;
 	}
 
 	public int getApplicationUserCount() {
@@ -176,8 +183,7 @@ public class Application {
 	public void setApplicationUserCount(int applicationUserCount) {
 		this.applicationUserCount = applicationUserCount;
 	}
-	
-	
+
 	/*
 	 * sahip birim
 	 * müdürlük
