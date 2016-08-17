@@ -9,13 +9,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Edit team page</title>
+<title>Edit Application</title>
 </head>
 <body>
-<h1>Edit team page</h1>
-<p>Here you can edit the existing team.</p>
+<h1>Edit Application</h1>
+<p>Here you can edit the app</p>
 <p>${message}</p>
-<form:form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/edit/${team.id}.html">
+<form:form method="POST" commandName="application" action="${pageContext.request.contextPath}/applicaiton/edit/${application.id}.html">
 <table>
 <tbody>
 	<tr>

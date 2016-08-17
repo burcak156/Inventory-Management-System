@@ -20,9 +20,9 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/homePage").access("hasRole('ROLE_USER')").and()
+		http.authorizeRequests().antMatchers("/home").access("hasRole('ROLE_USER')").and()
 		.formLogin().loginPage("/loginPage")
-		.defaultSuccessUrl("/homePage")
+		.defaultSuccessUrl("/home")
 		.failureUrl("/loginPage?error")
 		.usernameParameter("username").passwordParameter("password")
 		.and()

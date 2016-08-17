@@ -24,7 +24,7 @@
 <tr>
 	<td>${team.id}</td>
 	<td>${team.name}</td>
-	<td>${team.rating}</td>
+    <td>${team.rating}</td>
 	<td>
 	<a href="${pageContext.request.contextPath}/team/edit/${team.id}.html">Edit</a><br/>
 	<a href="${pageContext.request.contextPath}/team/delete/${team.id}.html">Delete</a><br/>
@@ -34,7 +34,7 @@
 </tbody>
 </table>
 
-<p><a href="${pageContext.request.contextPath}/index.html">Home page</a></p>
+<p><a href="${pageContext.request.contextPath}/home.html">Home page</a></p>
 
 </body>
 </html>

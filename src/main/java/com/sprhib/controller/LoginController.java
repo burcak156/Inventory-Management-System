@@ -17,10 +17,10 @@ public class LoginController {
 		return model;
 	}
 
-	@RequestMapping(value = {"/homePage"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/home"}, method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView model = new ModelAndView();
-		model.setViewName("/homePage");
+		model.setViewName("/home");
 		return model;
 	}
 	
@@ -28,7 +28,7 @@ public class LoginController {
 	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout",required = false) String logout) {
 		ModelAndView model = new ModelAndView();
 		if(error != null) {
-			model.addObject(error, "Invalid Credential provided");
+			model.addObject("error", "Invalid Credential provided");
 		}
 		if(logout != null) {
 			model.addObject("message", "Logged out successfully");

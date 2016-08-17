@@ -2,6 +2,7 @@ package com.sprhib.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,6 @@ public class TeamDAOImpl implements TeamDAO {
 		teamToUpdate.setName(team.getName());
 		teamToUpdate.setRating(team.getRating());
 		getCurrentSession().update(teamToUpdate);
-		
 	}
 
 	public Team getTeam(int id) {
