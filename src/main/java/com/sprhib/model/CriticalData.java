@@ -17,7 +17,7 @@ public class CriticalData {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int dataId;
+	private int applicationId;
 	
 	@Column
 	private String interruptTolerationTime;
@@ -28,18 +28,16 @@ public class CriticalData {
 	@Column
 	private String relatedModuls;
 	
-	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="application_applicationId")
+	@OneToOne(mappedBy = "criticalData", cascade=CascadeType.ALL)
 	private Application application;
 
-	
-	public int getDataId() {
-		return dataId;
+	public int getApplicationId() {
+		return applicationId;
 	}
 
-
-	public void setDataId(int dataId) {
-		this.dataId = dataId;
+	
+	public void setApplicationId(int applicationId) {
+		this.applicationId = applicationId;
 	}
 
 

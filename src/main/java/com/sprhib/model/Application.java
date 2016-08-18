@@ -2,11 +2,16 @@ package com.sprhib.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -56,13 +61,18 @@ public class Application implements Serializable {
 	private String applicationCommonUserCode;
 
 	@Column
-	private int applicationScreenNumber;
+	private Integer applicationScreenNumber;
 	
 	@Column
 	private String applicationAlternativeApp;
 	
 	@Column
-	private int applicationUserCount;
+	private Integer applicationUserCount;
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private CriticalData criticalData;
 
 	public int getApplicationId() {
 		return applicationId;
@@ -182,6 +192,14 @@ public class Application implements Serializable {
 
 	public void setApplicationUserCount(int applicationUserCount) {
 		this.applicationUserCount = applicationUserCount;
+	}
+
+	public CriticalData getCriticalData() {
+		return criticalData;
+	}
+
+	public void setCriticalData(CriticalData criticalData) {
+		this.criticalData = criticalData;
 	}
 
 	/*
