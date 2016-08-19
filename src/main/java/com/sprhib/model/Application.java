@@ -175,7 +175,7 @@ public class Application implements Serializable {
 		return applicationScreenNumber;
 	}
 
-	public void setApplicationScreenNumber(int applicationScreenNumber) {
+	public void setApplicationScreenNumber(Integer applicationScreenNumber) {
 		this.applicationScreenNumber = applicationScreenNumber;
 	}
 
@@ -191,7 +191,7 @@ public class Application implements Serializable {
 		return applicationUserCount;
 	}
 
-	public void setApplicationUserCount(int applicationUserCount) {
+	public void setApplicationUserCount(Integer applicationUserCount) {
 		this.applicationUserCount = applicationUserCount;
 	}
 
