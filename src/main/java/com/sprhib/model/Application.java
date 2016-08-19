@@ -1,15 +1,16 @@
 package com.sprhib.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -18,9 +19,6 @@ import javax.persistence.Table;
 @Table(name="application")
 public class Application implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -64,15 +62,18 @@ public class Application implements Serializable {
 	private Integer applicationScreenNumber;
 	
 	@Column
+	private Integer applicationReportNumber;
+	
+	@Column
 	private String applicationAlternativeApp;
 	
 	@Column
 	private Integer applicationUserCount;
 	
-	
 	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+    @JoinColumn(name="dataId")
 	private CriticalData criticalData;
+	
 
 	public int getApplicationId() {
 		return applicationId;
@@ -194,13 +195,15 @@ public class Application implements Serializable {
 		this.applicationUserCount = applicationUserCount;
 	}
 
-	public CriticalData getCriticalData() {
-		return criticalData;
+	public Integer getApplicationReportNumber() {
+		return applicationReportNumber;
 	}
 
-	public void setCriticalData(CriticalData criticalData) {
-		this.criticalData = criticalData;
+	public void setApplicationReportNumber(Integer applicationReportNumber) {
+		this.applicationReportNumber = applicationReportNumber;
 	}
+
+
 
 	/*
 	 * sahip birim

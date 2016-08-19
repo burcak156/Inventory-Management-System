@@ -27,7 +27,7 @@ public class CriticalDataDAOImpl implements CriticalDataDAO {
 
 	@Override
 	public void updateCriticalData(CriticalData criticalData) {
-		CriticalData criticalDataToUpdate = getCriticalData(criticalData.getApplicationId());
+		CriticalData criticalDataToUpdate = getCriticalData(criticalData.getDataId());
 		criticalDataToUpdate.setRelatedModuls(criticalData.getRelatedModuls());
 		getCurrentSession().update(criticalDataToUpdate);
 	}
