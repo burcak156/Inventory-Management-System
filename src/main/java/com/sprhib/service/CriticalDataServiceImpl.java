@@ -44,5 +44,11 @@ public class CriticalDataServiceImpl implements CriticalDataService {
 	public List<CriticalData> getCriticalDatum() {
 		return criticalDataDAO.getCriticalDatum();
 	}
+
+	@Override
+	public void updateWithAppId(CriticalData criticalData, Integer AppId) {
+		criticalDataDAO.updateWithAppId(criticalData, AppId);
+		
+	}
 	
 }

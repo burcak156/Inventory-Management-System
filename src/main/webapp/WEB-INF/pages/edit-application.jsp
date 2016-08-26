@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <?xml version="1.0" encoding="UTF-8" ?>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="c"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html lang="en">
+<html lang="tr">
 <head>
 <title>Edit Application</title>
 <meta charset="utf-8">
@@ -50,11 +51,13 @@ footer {
 		height: auto;
 	}
 }
+
 tr {
-    border: 2px solid black;
+	border: 2px solid black;
 }
+
 td {
-		text-align: right;
+	text-align: right;
 }
 </style>
 </head>
@@ -89,92 +92,154 @@ td {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
-					<a href="#">Link</a>
+					<a
+						href="${pageContext.request.contextPath}/application/applicationlist.html">Tüm
+						Uygulamalar</a>
 				</p>
 				<p>
-					<a href="#">Link</a>
-				</p>
-				<p>
-					<a href="#">Link</a>
+					<a
+						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama
+						Ekle </a>
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Welcome</h1>
-				<p style="width: 1366px;">
+				<h1>Uygulama Düzenleme</h1>
+				<p style="width: 1024px;">
 					<c:form method="POST" commandName="application"
 						action="${pageContext.request.contextPath}/application/edit/${application.applicationId}.html">
-						<table style="width: 1366px;">
+						<table style="width: 1024px;">
 							<tbody>
 								<tr>
-									<td>Uygulama Kodu:</td>
-									<td><c:input class="form-control" id="ex1" type="text"
-											path="applicationCode" /></td>
-									<td>Uygulama Adı:</td>
-									<td><c:input class="form-control" id="ex3" type="text"
-											path="applicationName" /></td>
+									<td>Uygulama Kodu :</td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationCode" /></td>
+									<td>Uygulama Adı :</td>
+									<td colspan="2"><c:input class="form-control" id="ex3"
+											type="text" path="applicationName" /></td>
+								</tr>
+								<tr>
 									<td>Uygulama Açıklaması:</td>
-									<td><c:input class="form-control" id="ex3" type="text"
-											path="applicationNutShell" /></td>
+									<td colspan="2"><c:input class="form-control" id="ex3"
+											type="text" path="applicationNutShell" /></td>
+									<td>Uygulama Ortak Kullanıcı Kodu :</td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationCommonUserCode" /></td>
 								</tr>
 								<tr>
-									<td>Uygulama Sahibi Müdürlük :</td><td></td>
-									<td>Uygulama Sahibi Birim : </td><td></td>
+									<td>Uygulama Sahibi Müdürlük :</td>
+									<td colspan="2"><c:input class="form-control" id="ex3"
+											type="text" path="applicationDirection" /></td>
+									<td>Uygulama Sahibi Birim :</td>
+									<td colspan="2"><c:input class="form-control" id="ex3"
+											type="text" path="applicationUnit" /></td>
 								</tr>
-								
 								<tr>
-									<td>Uygulama Sorumlusu :</td><td></td>
-									<td>Uygulama Geliştiriciler :</td><td colspan="2"></td>
+									<td>Uygulama Sorumlusu :</td>
+									<td colspan="2"><c:input class="form-control" id="ex3"
+											type="text" path="applicationOfficer" /></td>
+									<td>Uygulama Geliştiriciler :</td>
+									<td colspan="2"><c:input class="form-control" id="ex3"
+											type="text" path="applicationDevelopers" /></td>
 								</tr>
 								<tr>
-									<td>Uygulama Ortak Kullanıcı Kodu :</td><td><c:input class="form-control" id="ex1" type="text"
-											path="applicationCommonUserCode" /></td>
-									<td>Uygulama Ekran Sayısı :</td><td><c:input class="form-control" id="ex1" type="number"
+									<td>Uygulama Destekçileri :</td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationSupport" /></td>
+									<td>Uygulama Ekran Sayısı :</td>
+									<td><c:input class="form-control" id="ex1" type="number"
 											path="applicationScreenNumber" /></td>
-									<td>Uygulama Rapor Sayısı :</td><td><c:input class="form-control" id="ex1" type="number"
+									<TD />
+								</tr>
+								<tr>
+									<td>Uygulama Rapor Sayısı :</td>
+									<td><c:input class="form-control" id="ex1" type="number"
 											path="applicationReportNumber" /></td>
+									<TD />
+									<td>Uygulama Kullanıcı Sayısı :</td>
+									<td><c:input class="form-control" id="ex1" type="number"
+											path="applicationUserCount" /></td>
+									<TD />
 								</tr>
-								
+
 								<tr>
-									<td colspan="6"><label for="ex3"><h3>Teknik
-												Bilgiler :</h3></label></td>
+									<td colspan="6" align="left"><h3>
+											<p align="left">Teknik Bilgiler :</p>
+										</h3></td>
 								</tr>
 								<tr>
-									<td>Donanım Platformu :<br /><sup>(Anabilgisayar, AS/400, Sunucu, DMZ vs.)</sub></td>
+									<td>Donanım Platformu :<br /> <sup>(Anabilgisayar,
+											AS/400, Sunucu, DMZ vs.)</sub></td>
 									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationHardwarePlatform" /></td>
-									<td>İşletim Sistemi :<br /><sup>(z/os, OS/400, Windows, Linux, Unix vs.)</sup></td>
+									<td>İşletim Sistemi :<br /> <sup>(z/os, OS/400,
+											Windows, Linux, Unix vs.)</sup></td>
 									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationOS" /></td>
-									<td>Uyumlu Web Tarayıcı :<br /><sup>(Firefox, IE, Chrome vs. Uyumlu Versiyon)</sup></td>
+									<td>Uyumlu Web Tarayıcı :<br /> <sup>(Firefox, IE,
+											Chrome vs. Uyumlu Versiyon)</sup></td>
 									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationBrowser" /></td>
 								</tr>
 								<tr>
-									<td>Sunucu Ortamı :</br><sup>(WAS, CICS, Tomcat, PHP sunucu vs.)</sup></td>
+									<td>Sunucu Ortamı :</br> <sup>(WAS, CICS, Tomcat, PHP
+											sunucu vs.)</sup></td>
 									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationServer" /></td>
-									<td>Veri Depolama Ortamı :</br><sup>(DB2 for z/OS, DB2, LUW, VSAM, SQLServer, MySql)</sup></td>
+									<td>Veri Depolama Ortamı :</br> <sup>(DB2 for z/OS, DB2,
+											LUW, VSAM, SQLServer, MySql)</sup></td>
 									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationDatabase" /></td>
-									<td>Programlama Dili :<br /><sup>(JAVA, PHP, Natural, PL/1, ASP, Excel Makroları)</sup></td>
+									<td>Programlama Dili :<br /> <sup>(JAVA, PHP,
+											Natural, PL/1, ASP, Excel Makroları)</sup></td>
 									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationProgrammingLang" /></td>
 								</tr>
 								<tr>
-									<td>Yetkilendirme Ortamı :<br /><sup>(TSS, EDS, AD vs.)</sup></td><td><c:input class="form-control" id="ex1" type="text"
+									<td>Yetkilendirme Ortamı :<br /> <sup>(TSS, EDS, AD
+											vs.)</sup></td>
+									<td><c:input class="form-control" id="ex1" type="text"
 											path="applicationAuthorization" /></td>
+									<TD colspan="4" />
+								</tr>
+								<tr>
+									<td colspan="6"><h3>
+											<p align="left">Uygulama Kritik Bilgileri :</p>
+										</h3></td>
+								</tr>
+								<tr>
+									<td>Kesinti Tahammül Süresi :<br /> <sup>(Saat)</sup></td>
+									<td><c:input class="form-control" id="ex1" type="text"
+											path="criticalData.interruptTolerationTime" /></td>
+									<td>Çalışmazsa Alternatif Uygulama :</td>
+									<td><c:input class="form-control" id="ex1" type="text"
+											path="applicationAlternativeApp" /></td>
+									<td>Kesintiden Etkilenen Uygulamalar :</td>
+									<td><c:input class="form-control" id="ex1" type="text"
+											path="criticalData.affectedApplications" /></td>
+
+								</tr>
+								<tr>
+									<td>Kritik Saat :</td>
+									<td><c:input class="form-control" id="ex1" type="text"
+											path="criticalData.criticalHours" /></td>
+									<td>Kritik Gün :</td>
+									<td><c:input class="form-control" id="ex1" type="text"
+											path="criticalData.criticalDays" /></td>
+									<td>İlgili Modüller :</td>
+									<td><c:input class="form-control" id="ex1" type="text"
+											path="criticalData.relatedModuls" /></td>
 								</tr>
 								<tr>
 									<td><input type="submit" value="Edit" /></td>
-									<td></td>
+									<td colspan="4"></td>
 								</tr>
 							</tbody>
 						</table>
 					</c:form>
 				</p>
 				<hr>
-				<h3>Test</h3>
-				<p>Lorem ipsum...</p>
+				<h3></h3>
+				<p></p>
 			</div>
 			<!--     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -188,7 +253,7 @@ td {
 	</div>
 
 	<footer class="container-fluid text-center">
-		<p>Footer Text</p>
+		<p>Central Bank of the Republic of Turkey</p>
 	</footer>
 
 </body>

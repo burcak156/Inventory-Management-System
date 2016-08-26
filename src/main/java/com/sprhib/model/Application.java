@@ -1,7 +1,6 @@
 package com.sprhib.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,10 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -68,14 +64,28 @@ public class Application implements Serializable {
 	private String applicationAlternativeApp;
 	
 	@Column
+	private String applicationDirection;
+	
+	@Column
+	private String applicationUnit;
+	
+	@Column
+	private String applicationDevelopers;
+	
+	@Column
+	private String applicationOfficer;
+	
+	@Column
+	private String applicationSupport;
+
+	@Column
 	private Integer applicationUserCount;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="dataId")
+	@OneToOne(mappedBy = "application", cascade = CascadeType.ALL)
 	private CriticalData criticalData;
 	
 
-	public int getApplicationId() {
+	public Integer getApplicationId() {
 		return applicationId;
 	}
 
@@ -171,7 +181,7 @@ public class Application implements Serializable {
 		this.applicationCommonUserCode = applicationCommonUserCode;
 	}
 
-	public int getApplicationScreenNumber() {
+	public Integer getApplicationScreenNumber() {
 		return applicationScreenNumber;
 	}
 
@@ -187,7 +197,7 @@ public class Application implements Serializable {
 		this.applicationAlternativeApp = applicationAlternativeApp;
 	}
 
-	public int getApplicationUserCount() {
+	public Integer getApplicationUserCount() {
 		return applicationUserCount;
 	}
 
@@ -203,16 +213,51 @@ public class Application implements Serializable {
 		this.applicationReportNumber = applicationReportNumber;
 	}
 
+	public CriticalData getCriticalData() {
+		return criticalData;
+	}
 
+	public void setCriticalData(CriticalData criticalData) {
+		this.criticalData = criticalData;
+	}
 
-	/*
-	 * sahip birim
-	 * müdürlük
-	 * 
-	 * geliþtirici
-	 * uygulama sorumlusu
-	 * destek grubu
-	 * 
-	 * iliþkili uygulamalar
-	 */
+	public String getApplicationDirection() {
+		return applicationDirection;
+	}
+	
+	public void setApplicationDirection(String applicationDirection) {
+		this.applicationDirection = applicationDirection;
+	}
+
+	public String getApplicationUnit() {
+		return applicationUnit;
+	}
+
+	public void setApplicationUnit(String applicationUnit) {
+		this.applicationUnit = applicationUnit;
+	}
+
+	public String getApplicationDevelopers() {
+		return applicationDevelopers;
+	}
+
+	public void setApplicationDevelopers(String applicationDevelopers) {
+		this.applicationDevelopers = applicationDevelopers;
+	}
+
+	public String getApplicationOfficer() {
+		return applicationOfficer;
+	}
+
+	public void setApplicationOfficer(String applicationOfficer) {
+		this.applicationOfficer = applicationOfficer;
+	}
+
+	public String getApplicationSupport() {
+		return applicationSupport;
+	}
+
+	public void setApplicationSupport(String applicationSupport) {
+		this.applicationSupport = applicationSupport;
+	}
 }

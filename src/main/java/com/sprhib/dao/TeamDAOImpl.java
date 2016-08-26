@@ -30,7 +30,7 @@ public class TeamDAOImpl implements TeamDAO {
 		teamToUpdate.setRating(team.getRating());
 		getCurrentSession().update(teamToUpdate);
 	}
-
+	
 	public Team getTeam(int id) {
 		Team team = (Team) getCurrentSession().get(Team.class, id);
 		return team;

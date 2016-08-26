@@ -42,6 +42,7 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 		appToUpdate.setApplicationScreenNumber(application.getApplicationScreenNumber());
 		appToUpdate.setApplicationServer(application.getApplicationServer());
 		appToUpdate.setApplicationUserCount(application.getApplicationUserCount());
+		//appToUpdate.setCriticalData(application.getCriticalData());
 		getCurrentSession().update(appToUpdate);
 	}
 	

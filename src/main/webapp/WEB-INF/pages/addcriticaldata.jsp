@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?xml version="1.0" encoding="UTF-8" ?>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html lang="tr">
@@ -62,7 +62,6 @@ td {
 </style>
 </head>
 <body>
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -92,43 +91,67 @@ td {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
-					<a
-						href="${pageContext.request.contextPath}/application/applicationlist.html">Tüm
-						Uygulamalar</a>
+					<a href="#">Link</a>
 				</p>
 				<p>
-					<a
-						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama Ekle
-					</a>
+					<a href="#">Link</a>
+				</p>
+				<p>
+					<a href="#">Link</a>
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Home page</h1>
+				<h1>Add application page</h1>
+				<p>Here you can add a new application.</p>
+				<c:form method="POST" commandName="criticaldata"
+					action="${pageContext.request.contextPath}/application/addcritical.html">>
+						<table style="width: 1366px;">
+						<tbody>
+							<tr>
+								<td colspan="6"><h3>
+										<p align="left">Uygulama Kritik Bilgileri :</p>
+									</h3></td>
+							</tr>
+							<tr>
+								<td>Kesinti Tahammül Süresi :<br /> <sup>(Saat)</sup></td>
+								<td><c:input class="form-control" id="ex1" type="text"
+										path="interruptTolerationTime" /></td>
+<%-- 								<td>Çalışmazsa Alternatif Uygulama :</td>
+								<td><c:input class="form-control" id="ex1" type="text"
+										path="applicationAlternativeApp" /></td> --%>
+								<td>Kesintiden Etkilenen Uygulamalar :</td>
+								<td><c:input class="form-control" id="ex1" type="text"
+										path="affectedApplications" /></td>
 
-
+							</tr>
+							<tr>
+								<td>Kritik Saat :</td>
+								<td><c:input class="form-control" id="ex1" type="text"
+										path="criticalHours" /></td>
+								<td>Kritik Gün :</td>
+								<td><c:input class="form-control" id="ex1" type="text"
+										path="criticalDays" /></td>
+								<td>İlgili Modüller :</td>
+								<td><c:input class="form-control" id="ex1" type="text"
+										path="relatedModuls" /></td>
+							</tr>
+							<tr>
+<%-- 							<td><c:input class="form-control" id="ex1" type="text"
+										path="application"></c:input>
+							</td> --%>
+							</tr>
+							<tr>
+								<td><input type="submit" value="addcritical" /></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</c:form>
 				<p>
-					${message}<br /> <a
-						href="${pageContext.request.contextPath}/team/add.html">Add
-						new team</a><br /> <a
-						href="${pageContext.request.contextPath}/team/list.html">Team
-						list</a><br /> <a
-						href="${pageContext.request.contextPath}/application/applicationlist.html">AppList</a><br />
-					<a
-						href="${pageContext.request.contextPath}/application/addapplication.html">AddApp
-					</a><br /> <a
-						href="${pageContext.request.contextPath}/application/addcriticaldata.html">Addcritical
-					</a><br />
 
+					<a href="${pageContext.request.contextPath}/home.html">Home
+						page</a>
 				</p>
-
-				<c:url value="/logout" var="logoutUrl" />
-				<form id="logout" action="${logoutUrl}" method="post">
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
-				</form>
-				<c:if test="${pageContext.request.userPrincipal.name != null}">
-					<a href="javascript:document.getElementById('logout').submit()">Logout</a>
-				</c:if>
 				<hr>
 				<h3>Test</h3>
 				<p>Lorem ipsum...</p>
@@ -145,8 +168,7 @@ td {
 	</div>
 
 	<footer class="container-fluid text-center">
-		<p>Central Bank of the Republic of Turkey - Information
-			Technologies</p>
+		<p>Central Bank of the Republic of Turkey</p>
 	</footer>
 
 </body>

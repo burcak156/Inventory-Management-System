@@ -11,4 +11,5 @@ public interface CriticalDataDAO {
 	public CriticalData getCriticalData(int id);
 	public void deleteCriticalData(int id);
 	public List<CriticalData> getCriticalDatum();
+	public void updateWithAppId(CriticalData criticalData, Integer AppId);
 }

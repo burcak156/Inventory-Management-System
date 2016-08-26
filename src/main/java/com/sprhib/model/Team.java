@@ -39,13 +39,7 @@ public class Team implements Serializable {
 		
 	}
 	
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
+	
 
 	public Team(String name, int rating) {
 		this.name = name;

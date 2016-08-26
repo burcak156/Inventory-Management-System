@@ -9,13 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name="criticaldata")
@@ -44,6 +40,10 @@ public class CriticalData implements Serializable {
 	
 	@Column
 	private String process;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="applicationId")
+	private Application application;
 	
 	public Integer getDataId() {
 		return dataId;
@@ -100,5 +100,13 @@ public class CriticalData implements Serializable {
 
 	public void setProcess(String process) {
 		this.process = process;
+	}
+
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
 	}
 }
