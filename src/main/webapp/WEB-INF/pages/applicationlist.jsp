@@ -1,19 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8" ?>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="a"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html>
+<html lang="tr">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <title>Uygulama Listesi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<c:url value="/resources/css/bootstrap.min.css" var="cssURL" />
+<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
+
+
+<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -59,46 +61,79 @@ td {
 	text-align: right;
 }
 </style>
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css" />
+
+<c:url value="/resources/css/jquery.dataTables.min.css" var="cssURL" />
+<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
+<c:url value="/resources/css/buttons.dataTables.min.css" var="cssURL" />
+<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
+
 
 <script type="text/javascript"
-	src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+	src="<c:url value="/resources/js/jquery-1.12.3.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/dataTables.buttons.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/buttons.flash.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jszip.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/pdfmake.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/vfs_fonts.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/buttons.html5.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/buttons.print.min.js"/>"></script>
+	
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		$('#example').DataTable();
+		$('#example').DataTable({
+			dom : 'Bfrtip',
+			buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
+		});
 	});
 </script>
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Logo</a>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<c:url value="/resources/img/logo2.png" var="imgURL" />
+				<a class="navbar-brand" href=""><img src="${imgURL}"
+					align="left" width="200" height="50"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Projects</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><c:if
+							test="${pageContext.request.userPrincipal.name != null}">
+							<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+						</c:if><span class="glyphicon glyphicon-log-in"></span></li>
+				</ul>
+			</div>
 		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Projects</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
-			</ul>
-		</div>
-	</div>
 	</nav>
 
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
+				<p>
+					<a href="${pageContext.request.contextPath}/home.html">Ana
+						Sayfa</a>
+				</p>
 				<p>
 					<a
 						href="${pageContext.request.contextPath}/application/applicationlist.html">Tüm
@@ -106,24 +141,41 @@ td {
 				</p>
 				<p>
 					<a
-						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama Ekle
-					</a>
+						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama
+						Ekle </a>
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
 				<h1>Uygulama Listesi</h1>
 
 				<div class="container">
+					<div>
+						${message} Detaylı Arama
 
-					<table id="example" class="display" cellspacing="0" width="100%">
+
+						<form
+							action="${pageContext.request.contextPath}/application/applicationlist.html"
+							method="GET">
+							<input id="search" name="search"> <select name="dropdown">
+								<option value="applicationDevelopers" selected>Uygulama
+									Geliştiriciler</option>
+								<option value="applicationSupport">Uygulama Destekçiler</option>
+								<option value="applicationCommonUserCode">Uygulama
+									Ortak Kullanıcı Kodu</option>
+							</select> <input type=submit value="search"> <input type="hidden"
+								name="${_csrf.parameterName}" value="${_csrf.token}" />
+						</form>
+					</div>
+					<table id="example" class="display nowrap" width="100%"
+						cellspacing="0" style="color: Black">
 						<thead>
 							<tr>
-								<th>Uygulama Kodu</th>
-								<th>Uygulama Adı</th>
-								<th>Uygulama Sahibi Müdürlük</th>
-								<th>Uygulama Sahibi Birim</th>
-								<th>Uygulama Sorumlusu</th>
-								<th>Uygulama Açıklaması</th>
+								<th style="color: DarkRed">Uygulama Kodu</th>
+								<th style="color: DarkRed">Uygulama Adı</th>
+								<th style="color: DarkRed">Uygulama Sahibi Müdürlük</th>
+								<th style="color: DarkRed">Uygulama Sahibi Birim</th>
+								<th style="color: DarkRed">Uygulama Sorumlusu</th>
+								<th style="color: DarkRed">Uygulama Açıklaması</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -145,216 +197,13 @@ td {
 							</c:forEach>
 						</tbody>
 					</table>
-
 				</div>
 			</div>
 		</div>
 	</div>
 	<footer class="container-fluid text-center">
-		<p>Central Bank of the Republic of Turkey</p>
+		<p>Central Bank of the Republic of Turkey - Information
+			Technologies</p>
 	</footer>
-
-	<script type="text/javascript">
-					// For demo to fit into DataTables site builder...
-					$('#example').removeClass('display').addClass(
-							'table table-striped table-bordered');
-				</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-
-<c:url value="/resources/css/fixedHeader.bootstrap.min.csss"
-	var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/bootstrap.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/font-awesome.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/green.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/responsive.bootstrap.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/scroller.bootstrap.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/dataTables.bootstrap.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/custom.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/buttons.bootstrap.min.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-</head>
-<body>
-
-
-	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="x_panel">
-			<div class="x_title">
-				<h2>
-					Fixed Header Example <small>Users</small>
-				</h2>
-				
-				
-			</div>
-			<div class="x_content">
-				<p class="text-muted font-13 m-b-30">This example shows
-					FixedHeader being styling by the Bootstrap CSS framework.</p>
-				<table id="datatable-fixed-header"
-					class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>Uygulama Kodu</th>
-							<th>Uygulama Adı</th>
-							<th>Uygulama Sahibi Müdürlük</th>
-							<th>Uygulama Sahibi Birim</th>
-							<th>Uygulama Sorumlusu</th>
-							<th>Uygulama Açıklaması</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="app" items="${applications}">
-							<tr>
-								<td><c:out value="${app.applicationCode}" /></td>
-								<td><c:out value="${app.applicationName}" /></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><c:out value="${app.applicationNutShell}" /></td>
-								<td><a
-									href="${pageContext.request.contextPath}/application/edit/${app.applicationId}.html">Edit</a><br/>
-									<a
-									href="${pageContext.request.contextPath}/application/delete/${app.applicationId}.html">Delete</a><br/>
-								</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<p>
-					<a href="${pageContext.request.contextPath}/home.html">Home
-						page</a>
-				</p>
-			</div>
-		</div>
-	</div>
-<!-- jQuery -->
-    <script src="/resources/js/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/resources/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="/resources/js/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="/resources/js/nprogress.js"></script>
-    <!-- Datatables -->
-    <script src="/resources/js/jquery.dataTables.min.js"></script>
-    <script src="/resources/js/dataTables.bootstrap.min.js"></script>
-    <script src="/resources/js/dataTables.buttons.min.js"></script>
-    <script src="/resources/js/buttons.bootstrap.min.js"></script>
-    <script src="/resources/js/buttons.flash.min.js"></script>
-    <script src="/resources/js/buttons.html5.min.js"></script>
-    <script src="/resources/js/buttons.print.min.js"></script>
-    <script src="/resources/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/resources/js/dataTables.keyTable.min.js"></script>
-    <script src="/resources/js/dataTables.responsive.min.js"></script>
-    <script src="/resources/js/responsive.bootstrap.js"></script>
-    <script src="/resources/js/datatables.scroller.min.js"></script>
-    <script src="/resources/js/jszip.min.js"></script>
-    <script src="/resources/js/pdfmake.min.js"></script>
-    <script src="/resources/js/vfs_fonts.js"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="/resources/js/custom.min.js"></script>
-
-    <!-- Datatables -->
-    <script>
-      $(document).ready(function() {
-        var handleDataTableButtons = function() {
-          if ($("#datatable-buttons").length) {
-            $("#datatable-buttons").DataTable({
-              dom: "Bfrtip",
-              buttons: [
-                {
-                  extend: "copy",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "csv",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "excel",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "pdfHtml5",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "print",
-                  className: "btn-sm"
-                },
-              ],
-              responsive: true
-            });
-          }
-        };
-
-        TableManageButtons = function() {
-          "use strict";
-          return {
-            init: function() {
-              handleDataTableButtons();
-            }
-          };
-        }();
-
-        $('#datatable').dataTable();
-        $('#datatable-keytable').DataTable({
-          keys: true
-        });
-
-        $('#datatable-responsive').DataTable();
-
-        $('#datatable-scroller').DataTable({
-          ajax: "js/datatables/json/scroller-demo.json",
-          deferRender: true,
-          scrollY: 380,
-          scrollCollapse: true,
-          scroller: true
-        });
-
-        var table = $('#datatable-fixed-header').DataTable({
-          fixedHeader: true
-        });
-
-        TableManageButtons.init();
-      });
-    </script>
-    <!-- /Datatables -->
-</body>
-</html> --%>

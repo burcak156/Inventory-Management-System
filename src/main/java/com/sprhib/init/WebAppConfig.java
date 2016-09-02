@@ -38,6 +38,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
+    private static final String PROPERTY_NAME_HIBERNATE_CONNECTION_CHARSET="hibernate.connection.CharSet";
+    private static final String PROPERTY_NAME_HIBERNATE_CONNECTION_CHARSETENCODING="hibernate.connection.characterEncoding";
     
 	@Resource
 	private Environment env;
@@ -68,6 +70,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
 		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 		properties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO));
+		properties.put(PROPERTY_NAME_HIBERNATE_CONNECTION_CHARSET, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_CONNECTION_CHARSET));
+		properties.put(PROPERTY_NAME_HIBERNATE_CONNECTION_CHARSETENCODING, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_CONNECTION_CHARSETENCODING));
 		return properties;	
 	}
 	

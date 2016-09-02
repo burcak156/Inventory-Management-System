@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Login Form Template</title>
+<title>Login</title>
 
 <!-- CSS -->
 
@@ -44,7 +44,7 @@
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2 text">
 						<h1>
-							<strong>CBRT</strong> Login Form
+							<strong>CBRT</strong> Login
 						</h1>
 						<div class="description">
 							<p>
@@ -100,12 +100,7 @@
 	<script src="/resources/js/bootstrap.min.js"></script>
 	<script src="/resources/js/jquery.backstretch.min.js"></script>
 	<script src="/resources/js/scripts.js"></script>
-	<div
-		style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 640px; width: 1263px; z-index: -999999; position: fixed;"
-		class="backstretch">
-		<img src="/resources/img/backgrounds/1.jpg"
-			style="position: absolute; margin: 0px; padding: 0px; border: medium none; width: 1263px; height: 842px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -101px;">
-	</div>
+	
 	
 	
 	<!--[if lt IE 10]>

@@ -6,15 +6,17 @@
 	pageEncoding="UTF-8"%>
 <html lang="tr">
 <head>
-<title>Edit Application</title>
+<title>Home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<c:url value="/resources/css/bootstrap.min.css" var="cssURL" />
+<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
+
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="/resources/js/jquery.min.js"></script>
 <script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	src="/resources/js/bootstrap.min.js"></script>
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -71,18 +73,18 @@ td {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Logo</a>
+				<c:url value="/resources/img/logo2.png" var="imgURL" />
+			<a class="navbar-brand" href=""><img src="${imgURL}" align="left" width="200" height="50"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Projects</a></li>
-					<li><a href="#">Contact</a></li>
+					<li class="active"><a href="${pageContext.request.contextPath}/home.html">Ana Sayfa</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
+					<li><c:if
+							test="${pageContext.request.userPrincipal.name != null}">
+							<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+						</c:if><span class="glyphicon glyphicon-log-in"></span></li>
 				</ul>
 			</div>
 		</div>
@@ -92,35 +94,29 @@ td {
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<p>
+					<a href="${pageContext.request.contextPath}/home.html">Ana
+						Sayfa</a>
+				</p>
+				<p>
 					<a
 						href="${pageContext.request.contextPath}/application/applicationlist.html">Tüm
 						Uygulamalar</a>
 				</p>
 				<p>
 					<a
-						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama Ekle
-					</a>
+						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama
+						Ekle </a>
 				</p>
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Home page</h1>
-
-
-				<p>
-					${message}<br /> <a
-						href="${pageContext.request.contextPath}/team/add.html">Add
-						new team</a><br /> <a
-						href="${pageContext.request.contextPath}/team/list.html">Team
-						list</a><br /> <a
-						href="${pageContext.request.contextPath}/application/applicationlist.html">AppList</a><br />
-					<a
-						href="${pageContext.request.contextPath}/application/addapplication.html">AddApp
-					</a><br /> <a
-						href="${pageContext.request.contextPath}/application/addcriticaldata.html">Addcritical
-					</a><br />
-
-				</p>
-
+				
+				<div align="center" style="margin: 20px 0px 5px; width: auto;">
+				<c:url value="/resources/img/logotcmb.png" var="imgURL" />
+				<img src="${imgURL}" alt="" title=""></div>
+				<h1>Hoşgeldiniz</h1>
+				
+				<h4> <== İŞLEM YAPMAK İÇİN SOL MENÜYÜ KULLANINIZ</h4>
+<%-- 
 				<c:url value="/logout" var="logoutUrl" />
 				<form id="logout" action="${logoutUrl}" method="post">
 					<input type="hidden" name="${_csrf.parameterName}"
@@ -128,19 +124,11 @@ td {
 				</form>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<a href="javascript:document.getElementById('logout').submit()">Logout</a>
-				</c:if>
+				</c:if> --%>
 				<hr>
-				<h3>Test</h3>
-				<p>Lorem ipsum...</p>
+				<h3></h3>
+				<p></p>
 			</div>
-			<!--     <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div> -->
 		</div>
 	</div>
 

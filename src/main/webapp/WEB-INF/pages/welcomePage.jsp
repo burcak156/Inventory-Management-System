@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>WELCOME</title>
 </head>
-<body>
+<body background="http://merint4.tcmb.gov.tr/images/header-bg.gif">
 	<h3>Welcome to KSG Project System</h3>
 	<a href="${pageContext.request.contextPath}/loginPage">Login</a>
 </body>
