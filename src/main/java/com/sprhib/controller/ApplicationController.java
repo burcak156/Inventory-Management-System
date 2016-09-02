@@ -1,6 +1,9 @@
 package com.sprhib.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +34,14 @@ public class ApplicationController {
 
 	@RequestMapping(value = "/applicationlist", method = RequestMethod.GET)
 	public ModelAndView listOfApplications(@RequestParam(value = "search", required = false) String param1,
-			@RequestParam(value = "dropdown", required = false) String param2) {
+			@RequestParam(value = "dropdown", required = false) String param2 , HttpServletRequest request) throws UnsupportedEncodingException {
 
+		
 		ModelAndView modelAndView = new ModelAndView("applicationlist");
-
+		request.setCharacterEncoding("UTF-8");
+		request.getParameter("search");
 		if (param1 != null || param2 != null) {
+			
 			modelAndView.addObject("message", param1);
 		//	List<Application> applications = applicationService.findBy(param2, param1);
 		//	modelAndView.addObject("applications", applications);

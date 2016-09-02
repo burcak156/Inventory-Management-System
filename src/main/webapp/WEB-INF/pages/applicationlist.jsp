@@ -86,7 +86,7 @@ td {
 	src="<c:url value="/resources/js/buttons.html5.min.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/buttons.print.min.js"/>"></script>
-	
+
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
 		$('#example').DataTable({
@@ -112,10 +112,14 @@ td {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Projects</a></li>
-					<li><a href="#">Contact</a></li>
+					<li class="active"><a
+						href="${pageContext.request.contextPath}/home.html">Ana Sayfa</a></li>
+					<li class="active"><a
+						href="${pageContext.request.contextPath}/application/applicationlist.html">Uygulama
+							Listesi</a></li>
+					<li class="active"><a
+						href="${pageContext.request.contextPath}/application/addapplication.html">Yeni
+							Uygulama Ekle </a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><c:if
@@ -129,7 +133,7 @@ td {
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
+			<%-- <div class="col-sm-2 sidenav">
 				<p>
 					<a href="${pageContext.request.contextPath}/home.html">Ana
 						Sayfa</a>
@@ -144,25 +148,25 @@ td {
 						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama
 						Ekle </a>
 				</p>
-			</div>
+			</div> --%>
 			<div class="col-sm-8 text-left">
 				<h1>Uygulama Listesi</h1>
 
 				<div class="container">
 					<div>
-						${message} Detaylı Arama
-
+						${message} 
+						Detaylı Arama
 
 						<form
 							action="${pageContext.request.contextPath}/application/applicationlist.html"
 							method="GET">
-							<input id="search" name="search"> <select name="dropdown">
+							<input id="search" name="search"><select name="dropdown">
 								<option value="applicationDevelopers" selected>Uygulama
 									Geliştiriciler</option>
 								<option value="applicationSupport">Uygulama Destekçiler</option>
 								<option value="applicationCommonUserCode">Uygulama
 									Ortak Kullanıcı Kodu</option>
-							</select> <input type=submit value="search"> <input type="hidden"
+							</select> <input type=submit value="search"><input type="hidden"
 								name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div>

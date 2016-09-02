@@ -12,21 +12,15 @@
 <a:url value="/resources/css/bootstrap.min.css" var="cssURL" />
 <link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
 
-<script src="/resources/js/jquery.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
 
-<SCRIPT type="text/javascript">
-function printForm(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
+<script src="<a:url value="/resources/js/jquery.min.js" />"></script>
+<script src="<a:url value="/resources/js/bootstrap.min.js" />"></script>
 
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
+<script>
+function myFunction() {
+    window.print();
 }
-</SCRIPT>
+</script>
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
@@ -61,6 +55,28 @@ footer {
 	}
 	.row.content {
 		height: auto;
+	}
+}
+
+@media print {
+	body * {
+		visibility: hidden;
+	}
+	#printableArea * {
+		visibility: visible;
+	}
+	#printableArea {
+		position: absolute;
+		top: 20px;
+		left: 10px;
+		width: 210mm;
+    	height: 297mm;
+	}
+	#ex3 {
+		width:250px;
+	}
+	#ex1 {
+		width:250px;
 	}
 }
 
@@ -120,60 +136,74 @@ td {
 						Ekle </a>
 				</p>
 			</div>
-			<div class="col-sm-8 text-left" style="width: 75%; height: auto">
+			<div class="col-sm-8 text-left">
 				<h1>Uygulama Düzenleme</h1>
 				<p style="width: 1024px;">
 					<c:form id="printableArea" method="POST" commandName="application"
 						action="${pageContext.request.contextPath}/application/edit/${application.applicationId}.html">
-						<table style="width:100%;">
+						<table style="width: 125%;">
 							<tbody>
 								<tr>
-									<td style="text-align:right; width: 200px; background-color: #DCDCDC"><b>Uygulama Kodu :</b></td>
+									<td
+										style="text-align: right; width: 200px; background-color: #DCDCDC"><b>Uygulama
+											Kodu :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="applicationCode" /></td>
-									<td style="text-align:right; width: 200px; background-color: #DCDCDC"><B>Uygulama Adı :</B></td>
+									<td
+										style="text-align: right; width: 200px; background-color: #DCDCDC"><B>Uygulama
+											Adı :</B></td>
 									<td colspan="2"><c:input class="form-control" id="ex3"
 											type="text" path="applicationName" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Açıklaması:</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Açıklaması:</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex3"
 											type="text" path="applicationNutShell" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Ortak Kullanıcı Kodu :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Ortak Kullanıcı Kodu :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="applicationCommonUserCode" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Sahibi Müdürlük :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Sahibi Müdürlük :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex3"
 											type="text" path="applicationDirection" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Sahibi Birim :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Sahibi Birim :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex3"
 											type="text" path="applicationUnit" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Sorumlusu :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Sorumlusu :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex3"
 											type="text" path="applicationOfficer" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Geliştiriciler :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Geliştiriciler :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex3"
 											type="text" path="applicationDevelopers" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Destekçileri :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Destekçileri :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="applicationSupport" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Ekran Sayısı :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Ekran Sayısı :</b></td>
 									<td><c:input class="form-control" id="ex1" type="number"
 											path="applicationScreenNumber" /></td>
 									<TD />
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Rapor Sayısı :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Rapor Sayısı :</b></td>
 									<td><c:input class="form-control" id="ex1" type="number"
 											path="applicationReportNumber" /></td>
 									<TD />
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uygulama Kullanıcı Sayısı :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uygulama
+											Kullanıcı Sayısı :</b></td>
 									<td><c:input class="form-control" id="ex1" type="number"
 											path="applicationUserCount" /></td>
 									<TD />
@@ -185,42 +215,48 @@ td {
 										</h3></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Donanım Platformu :</b><br /> <sup>(Anabilgisayar,
-											AS/400, Sunucu, DMZ vs.)</sub></td>
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationHardwarePlatform" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>İşletim Sistemi :</b><br /> <sup>(z/os, OS/400,
-											Windows, Linux, Unix vs.)</sup></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Donanım
+											Platformu :</b><br /> <sup>(Anabilgisayar, AS/400, Sunucu,
+											DMZ vs.)</sub></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationHardwarePlatform" /></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>İşletim
+											Sistemi :</b><br /> <sup>(z/os, OS/400, Windows, Linux,
+											Unix vs.)</sup></td>
 
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationOS" /></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationOS" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Uyumlu Web Tarayıcı :</b><br /> <sup>(Firefox, IE,
-											Chrome vs. Uyumlu Versiyon)</sup></td>
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationBrowser" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Sunucu Ortamı :</b><br> <sup>(WAS, CICS, Tomcat, PHP
-											sunucu vs.)</sup></td>
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationServer" /></td>
-								</tr>
-								<tr>
-
-									<td style="text-align:right; background-color: #DCDCDC"><b>Veri Depolama Ortamı :</b><br> <sup>(DB2 for z/OS, DB2,
-											LUW, VSAM, SQLServer, MySql)</sup></td>
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationDatabase" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Programlama Dili :</b><br /> <sup>(JAVA, PHP,
-											Natural, PL/1, ASP, Excel Makroları)</sup></td>
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationProgrammingLang" /></td>
-								</tr>
-								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Yetkilendirme Ortamı :</b><br /> <sup>(TSS, EDS, AD
+									<td style="text-align: right; background-color: #DCDCDC"><b>Uyumlu
+											Web Tarayıcı :</b><br /> <sup>(Firefox, IE, Chrome vs.
+											Uyumlu Versiyon)</sup></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationBrowser" /></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Sunucu
+											Ortamı :</b><br> <sup>(WAS, CICS, Tomcat, PHP sunucu
 											vs.)</sup></td>
-									<td colspan="2"><c:input class="form-control" id="ex1" type="text"
-											path="applicationAuthorization" /></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationServer" /></td>
+								</tr>
+								<tr>
+
+									<td style="text-align: right; background-color: #DCDCDC"><b>Veri
+											Depolama Ortamı :</b><br> <sup>(DB2 for z/OS, DB2,
+											LUW, VSAM, SQLServer, MySql)</sup></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationDatabase" /></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Programlama
+											Dili :</b><br /> <sup>(JAVA, PHP, Natural, PL/1, ASP,
+											Excel Makroları)</sup></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationProgrammingLang" /></td>
+								</tr>
+								<tr>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Yetkilendirme
+											Ortamı :</b><br /> <sup>(TSS, EDS, AD vs.)</sup></td>
+									<td colspan="2"><c:input class="form-control" id="ex1"
+											type="text" path="applicationAuthorization" /></td>
 									<TD colspan="3" />
 								</tr>
 								<tr>
@@ -229,35 +265,43 @@ td {
 										</h3></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Kesinti Tahammül Süresi :</b><br /> <sup>(Saat)</sup></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Kesinti
+											Tahammül Süresi :</b><br /> <sup>(Saat)</sup></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="criticalData.interruptTolerationTime" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Çalışmazsa Alternatif Uygulama :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Çalışmazsa
+											Alternatif Uygulama :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="applicationAlternativeApp" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Kesintiden Etkilenen Uygulamalar :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Kesintiden
+											Etkilenen Uygulamalar :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="criticalData.affectedApplications" /></td>
 
 
-									<td style="text-align:right; background-color: #DCDCDC"><b>Kritik Saat :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Kritik
+											Saat :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="criticalData.criticalHours" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right; background-color: #DCDCDC"><b>Kritik Gün :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>Kritik
+											Gün :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="criticalData.criticalDays" /></td>
-									<td style="text-align:right; background-color: #DCDCDC"><b>İlgili Modüller :</b></td>
+									<td style="text-align: right; background-color: #DCDCDC"><b>İlgili
+											Modüller :</b></td>
 									<td colspan="2"><c:input class="form-control" id="ex1"
 											type="text" path="criticalData.relatedModuls" /></td>
 								</tr>
 								<tr>
-									<td style="text-align:right"><input type="submit" value="Edit" /> <input
-										type="button" onclick="printForm('printableArea')"
-										value="Formu Yazdır" /></td>
+									<td style="text-align: right"><input type="submit"
+										value="Edit" /> 
+										
+										<button onclick="myFunction()">Formu Yazdır</button>
+										</td>
 									<td colspan="4"></td>
 								</tr>
 							</tbody>
@@ -268,14 +312,6 @@ td {
 				<h3></h3>
 				<p></p>
 			</div>
-			<!--     <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div> -->
 		</div>
 	</div>
 
@@ -285,89 +321,3 @@ td {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<%-- <%@taglib uri="http://www.springframework.org/tags/form" prefix="c" %>
-
-<?xml version="1.0" encoding="UTF-8" ?>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Edit Application</title>
-</head>
-
-
-
-<body>
-
-<div class="container">
-  <h2>Horizontal form with static control</h2>
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-10">
-        <p class="form-control-static">someone@example.com</p>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-<h1>Edit Application</h1>
-<p>Here you can edit the app</p>
-<p>${message}</p>
-<c:form method="POST" commandName="application" action="${pageContext.request.contextPath}/application/edit/${application.applicationId}.html">
-<table border="2">
-<tbody>
-	<tr>
-		<td>Uygulama Kodu:</td><td><c:input path="applicationCode"/></td>
-		<td>Uygulama Adı: </td><td><c:input path="applicationName"/></td>
-		<td>Uygulama Açıklaması:</td><td><c:input path="applicationNutShell"/></td>
-	</tr>
-	<tr>
-	<td><h3>Teknik Bilgiler:</h3></td></tr>
-	<tr>
-	<td>Donanım Platformu :</td><td><c:input path="applicationHardwarePlatform"/></td>
-	<td>İşletim Sistemi :</td><td><c:input path="applicationOS"/></td>
-	<td>Uyumlu Web Tarayıcı :</td><td></td>
-	</tr>
-	<tr>
-		<td><input type="submit" value="Edit" /></td>
-		<td></td>
-	</tr>
-</tbody>
-</table>
-</c:form>
-
-<p><a href="${pageContext.request.contextPath}/home.html">Home page</a></p>
-</body>
-</html> --%>
