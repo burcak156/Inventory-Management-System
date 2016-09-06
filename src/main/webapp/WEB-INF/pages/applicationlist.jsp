@@ -95,7 +95,13 @@ td {
 		});
 	});
 </script>
-
+<script>
+$(document).ready(function(){
+    $('.detailedBtn').click(function(){
+        $(".HideShowDiv").toggle(500);
+    });
+});
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -107,8 +113,8 @@ td {
 						class="icon-bar"></span>
 				</button>
 				<c:url value="/resources/img/logo2.png" var="imgURL" />
-				<a class="navbar-brand" href=""><img src="${imgURL}"
-					align="left" width="200" height="50"></a>
+				<img src="${imgURL}"
+					align="left" width="200" height="50">
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
@@ -133,40 +139,24 @@ td {
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<%-- <div class="col-sm-2 sidenav">
-				<p>
-					<a href="${pageContext.request.contextPath}/home.html">Ana
-						Sayfa</a>
-				</p>
-				<p>
-					<a
-						href="${pageContext.request.contextPath}/application/applicationlist.html">Tüm
-						Uygulamalar</a>
-				</p>
-				<p>
-					<a
-						href="${pageContext.request.contextPath}/application/addapplication.html">Uygulama
-						Ekle </a>
-				</p>
-			</div> --%>
 			<div class="col-sm-8 text-left">
 				<h1>Uygulama Listesi</h1>
 
 				<div class="container">
-					<div>
+				<BUTTON class="detailedBtn">Detaylı Arama Seçenekleri</BUTTON>
+					<div class="HideShowDiv">
 						${message} 
-						Detaylı Arama
-
+						
 						<form
 							action="${pageContext.request.contextPath}/application/applicationlist.html"
 							method="GET">
-							<input id="search" name="search"><select name="dropdown">
+							<input id="search" name="search" placeholder="Search..."><select name="dropdown">
 								<option value="applicationDevelopers" selected>Uygulama
 									Geliştiriciler</option>
 								<option value="applicationSupport">Uygulama Destekçiler</option>
 								<option value="applicationCommonUserCode">Uygulama
 									Ortak Kullanıcı Kodu</option>
-							</select> <input type=submit value="search"><input type="hidden"
+							</select> <input type=submit value="Search"><input type="hidden"
 								name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div>
@@ -180,7 +170,7 @@ td {
 								<th style="color: DarkRed">Uygulama Sahibi Birim</th>
 								<th style="color: DarkRed">Uygulama Sorumlusu</th>
 								<th style="color: DarkRed">Uygulama Açıklaması</th>
-								<th></th>
+								<th style="color: DarkRed">İşlemler</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -193,9 +183,9 @@ td {
 									<td><c:out value="${app.applicationOfficer}" /></td>
 									<td><c:out value="${app.applicationNutShell}" /></td>
 									<td><a
-										href="${pageContext.request.contextPath}/application/edit/${app.applicationId}.html">Edit</a><br />
+										href="${pageContext.request.contextPath}/application/edit/${app.applicationId}.html">Detay/Düzenle</a><br />
 										<a
-										href="${pageContext.request.contextPath}/application/delete/${app.applicationId}.html">Delete</a><br />
+										href="${pageContext.request.contextPath}/application/delete/${app.applicationId}.html">Sil</a><br />
 									</td>
 								</tr>
 							</c:forEach>

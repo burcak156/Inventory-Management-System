@@ -21,8 +21,8 @@
 <link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
 <c:url value="/resources/css/form-elements.css" var="cssURL" />
 <link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
-<c:url value="/resources/css/css/style.css" var="cssURL" />
-<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
+<%-- <c:url value="/resources/css/style.css" var="cssURL" />
+<link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" /> --%>
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,10 +31,14 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+<!-- <style type="text/css">
+body {
+	background:url('/resources/img/header.jpg') no-repeat scroll left center;
+}
+</style> -->
 </head>
 
-<body>
+<body background="<c:url value='resources/img/header.jpg'/>" style="background-repeat: no-repeat; background-attachment: fixed"/>
 
 	<!-- Top content -->
 	<div class="top-content">
@@ -100,9 +104,9 @@
 	<script src="/resources/js/bootstrap.min.js"></script>
 	<script src="/resources/js/jquery.backstretch.min.js"></script>
 	<script src="/resources/js/scripts.js"></script>
-	
-	
-	
+
+
+
 	<!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->

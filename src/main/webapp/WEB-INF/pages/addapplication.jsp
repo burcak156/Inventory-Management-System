@@ -13,8 +13,9 @@
 <a:url value="/resources/css/bootstrap.min.css" var="cssURL" />
 <link rel="stylesheet" type="text/css" media="screen" href="${cssURL}" />
 
-<script src="/resources/js/jquery.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="<a:url value="/resources/js/jquery.min.js" />"></script>
+<script src="<a:url value="/resources/js/bootstrap.min.js" />"></script>
+
 <style>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {

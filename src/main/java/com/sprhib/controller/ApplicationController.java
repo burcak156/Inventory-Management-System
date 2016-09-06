@@ -43,8 +43,8 @@ public class ApplicationController {
 		if (param1 != null || param2 != null) {
 			
 			modelAndView.addObject("message", param1);
-		//	List<Application> applications = applicationService.findBy(param2, param1);
-		//	modelAndView.addObject("applications", applications);
+			List<Application> applications = applicationService.findBy(param2, param1);
+			modelAndView.addObject("applications", applications);
 		} else {
 			List<Application> applications = applicationService.getApplications();
 			modelAndView.addObject("applications", applications);
