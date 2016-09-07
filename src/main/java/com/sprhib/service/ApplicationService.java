@@ -13,4 +13,5 @@ public interface ApplicationService {
 	public void deleteApplication(int id) throws ApplicationNotFoundException;
 	public List<Application> getApplications();
 	public List<Application> findBy(String columnName, String search);
+	public List<Application> getDevelopers();
 }

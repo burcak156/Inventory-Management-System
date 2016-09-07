@@ -96,11 +96,11 @@ td {
 	});
 </script>
 <script>
-$(document).ready(function(){
-    $('.detailedBtn').click(function(){
-        $(".HideShowDiv").toggle(500);
-    });
-});
+	$(document).ready(function() {
+		$('.detailedBtn').click(function() {
+			$(".HideShowDiv").toggle(500);
+		});
+	});
 </script>
 </head>
 <body>
@@ -113,8 +113,7 @@ $(document).ready(function(){
 						class="icon-bar"></span>
 				</button>
 				<c:url value="/resources/img/logo2.png" var="imgURL" />
-				<img src="${imgURL}"
-					align="left" width="200" height="50">
+				<img src="${imgURL}" align="left" width="200" height="50">
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
@@ -143,23 +142,40 @@ $(document).ready(function(){
 				<h1>Uygulama Listesi</h1>
 
 				<div class="container">
-				<BUTTON class="detailedBtn">Detaylı Arama Seçenekleri</BUTTON>
+					<BUTTON class="detailedBtn">Detaylı Arama Seçenekleri</BUTTON>
+					
 					<div class="HideShowDiv">
-						${message} 
+						${message}
 						
 						<form
 							action="${pageContext.request.contextPath}/application/applicationlist.html"
 							method="GET">
-							<input id="search" name="search" placeholder="Search..."><select name="dropdown">
+							<input id="search" name="search" placeholder="Search...">
+							<select name="dropdown">
+							<option value="">Select Area</option>
 								<option value="applicationDevelopers" selected>Uygulama
 									Geliştiriciler</option>
 								<option value="applicationSupport">Uygulama Destekçiler</option>
 								<option value="applicationCommonUserCode">Uygulama
 									Ortak Kullanıcı Kodu</option>
-							</select> <input type=submit value="Search"><input type="hidden"
-								name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</select> 
+							<select name="devDrop">
+								<c:forEach var="dev" items="${devList}">
+									<option><c:out value="${dev}" /></option>
+								</c:forEach>
+							</select>
+
+
+						<%--<a:select path="dev">
+								<a:option value="${dev}" label="${dev}">
+								</a:option>
+							</a:select> --%>
+							<input type=submit value="Search">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 						</form>
 					</div>
+			
 					<table id="example" class="display nowrap" width="100%"
 						cellspacing="0" style="color: Black">
 						<thead>

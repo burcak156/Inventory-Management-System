@@ -1,7 +1,9 @@
 package com.sprhib.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,16 +38,25 @@ public class ApplicationController {
 	public ModelAndView listOfApplications(@RequestParam(value = "search", required = false) String param1,
 			@RequestParam(value = "dropdown", required = false) String param2 , HttpServletRequest request) throws UnsupportedEncodingException {
 
-		
 		ModelAndView modelAndView = new ModelAndView("applicationlist");
+		
+		List<Application> developers = applicationService.getDevelopers();
+		modelAndView.addObject("devList", developers);
+		
+		modelAndView.addObject("message", developers.get(0));
+		
+		
+		//-------------------------
 		request.setCharacterEncoding("UTF-8");
 		request.getParameter("search");
-		if (param1 != null || param2 != null) {
+	
+		if (param1 != null && param2 != null) {
 			
 			modelAndView.addObject("message", param1);
 			List<Application> applications = applicationService.findBy(param2, param1);
 			modelAndView.addObject("applications", applications);
-		} else {
+		} 
+		else {
 			List<Application> applications = applicationService.getApplications();
 			modelAndView.addObject("applications", applications);
 		}
@@ -113,7 +124,7 @@ public class ApplicationController {
 		applicationService.updateApplication(application);
 		criticalDataService.updateWithAppId(criticalData, application.getApplicationId());
 
-		String message = "Uygulama ba�ar�yla g�ncellendi.";
+		String message = "Application Successfully updated.";
 		modelAndView.addObject("message", message);
 		modelAndView.addObject("application", application);
 		return modelAndView;

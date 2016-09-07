@@ -102,5 +102,10 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 		.list();
 	
 	}
+	@SuppressWarnings("unchecked")
+	public List<Application> getDevelopers() {
+		return getCurrentSession().createQuery("select distinct app.applicationDevelopers from Application app").list();
+	}
+	
 	
 }

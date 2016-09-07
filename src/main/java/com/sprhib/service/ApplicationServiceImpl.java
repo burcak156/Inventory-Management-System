@@ -48,4 +48,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return applicationDAO.findBy(columnName, search);	
 	}
 
+	@Override
+	public List<Application> getDevelopers() {
+		return applicationDAO.getDevelopers();
+	}
 }
