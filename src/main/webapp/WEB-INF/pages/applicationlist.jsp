@@ -143,39 +143,45 @@ td {
 
 				<div class="container">
 					<BUTTON class="detailedBtn">Detaylı Arama Seçenekleri</BUTTON>
-					
+
 					<div class="HideShowDiv">
 						${message}
-						
+
 						<form
 							action="${pageContext.request.contextPath}/application/applicationlist.html"
 							method="GET">
-							<input id="search" name="search" placeholder="Search...">
-							<select name="dropdown">
-							<option value="">Select Area</option>
-								<option value="applicationDevelopers" selected>Uygulama
-									Geliştiriciler</option>
-								<option value="applicationSupport">Uygulama Destekçiler</option>
-								<option value="applicationCommonUserCode">Uygulama
-									Ortak Kullanıcı Kodu</option>
-							</select> 
-							<select name="devDrop">
-								<c:forEach var="dev" items="${devList}">
-									<option><c:out value="${dev}" /></option>
-								</c:forEach>
-							</select>
-
-
-						<%--<a:select path="dev">
-								<a:option value="${dev}" label="${dev}">
-								</a:option>
-							</a:select> --%>
-							<input type=submit value="Search">
-							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
+							<table>
+								<tr>
+									<td><input id="search" name="search"
+										placeholder="Search..."></td>
+									<td><select name="dropdown">
+											<option value="" selected>Select Area</option>
+											<option value="applicationDevelopers">Uygulama
+												Geliştiriciler</option>
+											<option value="applicationSupport">Uygulama
+												Destekçiler</option>
+											<option value="applicationCommonUserCode">Uygulama
+												Ortak Kullanıcı Kodu</option>
+									</select></td>
+									<td><select name="devDrop">
+											<c:forEach var="dev" items="${devList}">
+												<option><c:out value="${dev}" /></option>
+											</c:forEach>
+									</select></td>
+								</tr>
+								<tr>
+									<td><input type=submit value="Search"></td>
+									<TD />
+									<td>
+									<input type="radio" name="radio" value="applicationDevelopers">Geliştirici<br>
+									<input type="radio" name="radio" value="applicationSupport">Destek<br></td>
+									<td><input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /></td>
+								</tr>
+							</table>
 						</form>
 					</div>
-			
+
 					<table id="example" class="display nowrap" width="100%"
 						cellspacing="0" style="color: Black">
 						<thead>

@@ -36,26 +36,30 @@ public class ApplicationController {
 
 	@RequestMapping(value = "/applicationlist", method = RequestMethod.GET)
 	public ModelAndView listOfApplications(@RequestParam(value = "search", required = false) String param1,
-			@RequestParam(value = "dropdown", required = false) String param2 , HttpServletRequest request) throws UnsupportedEncodingException {
+			@RequestParam(value = "dropdown", required = false) String param2 ,
+			@RequestParam(value = "radio", required = false) String param3,
+			@RequestParam(value = "devDrop", required = false) String param4, HttpServletRequest request) throws UnsupportedEncodingException {
 
 		ModelAndView modelAndView = new ModelAndView("applicationlist");
 		
 		List<Application> developers = applicationService.getDevelopers();
 		modelAndView.addObject("devList", developers);
 		
-		modelAndView.addObject("message", developers.get(0));
-		
-		
 		//-------------------------
 		request.setCharacterEncoding("UTF-8");
 		request.getParameter("search");
 	
-		if (param1 != null && param2 != null) {
+		if (param1 != null && param2 != null && param1 != "" && param2 != "") {
 			
 			modelAndView.addObject("message", param1);
 			List<Application> applications = applicationService.findBy(param2, param1);
 			modelAndView.addObject("applications", applications);
 		} 
+		else if (param3 != null && param4 != null && param3 != "" && param4 != "") {
+			List<Application> applications = applicationService.findBy(param3, param4);
+			modelAndView.addObject("applications", applications);
+		}
+	
 		else {
 			List<Application> applications = applicationService.getApplications();
 			modelAndView.addObject("applications", applications);
